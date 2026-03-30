@@ -1,31 +1,128 @@
 body {
-    margin:0;
+    background-color: dimgray;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.container-fluid,
-.content {
-    max-width: 1440px;
-    margin: auto;
+.header_1 {
+    background-color: #F7F9F6;
+    height: 10vh; 
+    display: flex;
+    align-items: center; 
+    padding: 10px; 
+    box-sizing: border-box; 
 }
 
-#game-content {
-    position: sticky;
-    top: 70px;
-    overflow-y: auto;
+
+.header_1 a {
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
-#game-content api-sports-widget {
-    max-height: calc(100vh - 100px);
+
+.LOGO_1 {
+    height: 100%; 
+    width: auto; 
+    object-fit: contain; 
 }
 
-#standings-content api-sports-widget,
-#team-content api-sports-widget {
-    margin-bottom: 1rem;
-    max-height: 55vh;
+.footer_1{
+    background-color: #F7F9F6;
+    height: 20vh; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 20px 50px; 
+    box-sizing: border-box; 
 }
 
-#leagues-list {
-    position: sticky;
-    top: 70px;
-    overflow-y: auto;
+.footer_1 a{
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inside{
+    flex: 1;
+    width: auto;
+}
+  
+.header_buttons{
+    text-decoration: none;
+    padding: 20px;
+    transition: color 0.3s ease;
+    color: #093C69;
+    text-align: center;
+}
+
+h3{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin: 0;
+}
+.FOOTER_TEXT{
+    color: #003964;
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+    padding: 30px;
+}
+
+.header_1 a:hover .header_buttons{
+    color: #ff9900;
+    text-align: center;
+}
+.header_buttons.active {
+    color: #ff9900; 
+    border-bottom: 2px solid #ff9900; 
+    padding-bottom: 0px; 
+
+}
+
+.nav_link{
+    margin-left: 30px;
+    border-bottom: 4px solid transparent;
+    box-sizing: border-box;
+}
+
+.header_buttons {
+    color: #003964;
+    margin: 0;
+    padding: 0; 
+    transition: color 0.3s ease;
+}
+
+.nav_link.active{
+    border-bottom: 4px solid #ff9900;
+}
+.nav_link.active .header_buttons{
+    color: #ff9900;
+}
+.nav_link:hover .header_bottons{
+    color: #ff9900;
+}
+
+.LEFT_FOOTER{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.LEFT_FOOTER a{
+    height: 100%;
+    display: block;
+}
+.LOGO_FOOTER{
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+.RIGHT_FOOTER{
+    display: flex;
+    align-items: center;
+    
 }
