@@ -1,0 +1,56 @@
+ŁUKASZ NIEBRZYDOWSKI
+SZYMON JACEWICZ
+KAROL OŁTARZEWSKI
+
+TEMAT = SPORT
+
+(https://www.api-football.com/) - API
+
+- Jakie dane będzie wykorzystywać aplikacja?
+
+Wykorzystywane będą poniższe informacje o meczach takie jak:
+-Kraj, sezon, liga, składy, drużyny, aktualizowany na żywo wynik meczu, najlepsi strzelcy, trenerzy, statystyki podań itd., predykcje, kontuzje
+
+-Jakie będą jej podstawowe funkcje?
+
+Podstawowymi funkcjami będzie sortowanie meczy na żywo na podstawie lig, możliwość stawianie swojej predykcji wygranego meczu, 
+
+-Jakie planowane są główne widoki?
+
+Home Page
+- Sortowanie meczy po ligach
+- Lista trwających meczy
+- Możliwość sprawdzania meczy po wyborze daty
+- Lista ulubionych drużyn (localStorage)
+- Mecz dnia
+- Spis lig 
+
+Strona meczu zaplanowanego 
+- Kraj, drużyna, liga zespołów
+- składy
+- kontuzje
+- predykcja wyniku
+- Top G/A meczu
+- head 2 head
+
+Strona meczu zakończonego 
+- Kraj, drużyna, liga zespołów
+- składy + zmiany
+- kontuzje
+- Top G/A meczu
+- head 2 head
+- wynik meczu
+
+Strona meczu live 
+- Kraj, drużyna, liga zespołów
+- składy
+- kontuzje
+- Top G/A meczu
+- head 2 head
+- Live Score
+- Live statystyki meczu
+
+
+
+czy trzeba robić tak żeby wynik odświeżał się automatycznie czy po F5?
+Czy można wykorzystać widgeta (https://www.api-football.com/documentation-v3#tag/Widgets)
