@@ -2,107 +2,35 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football API - Podgląd Lig</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            padding: 20px;
-            color: #333;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        pre {
-            background-color: #272822;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-size: 14px;
-            line-height: 1.5;
-            max-height: 600px;
-        }
-        .error {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-        button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <title>La Liga - Wyniki</title>
 </head>
 <body>
 
-<div class="container">
-    <h1>Wynik zapytania Football API</h1>
-    <p>Kliknij przycisk poniżej, aby pobrać dane o ligach:</p>
-    <button id="fetchBtn">Pobierz dane</button>
-    
-    <div id="status"></div>
-    <h3>Odpowiedź (JSON):</h3>
-    <pre id="output">Tutaj pojawi się wynik...</pre>
-</div>
+    <h1>La Liga (Sezon 2024)</h1>
+    <div id="output">Ładowanie...</div>
 
-<script>
-    // test
-    document.getElementById('fetchBtn').addEventListener('click', function() {
-        const outputElement = document.getElementById('output');
-        const statusElement = document.getElementById('status');
-        
-        outputElement.textContent = "Ładowanie danych...";
-        statusElement.textContent = "";
+    <script>
+        fetch("https://v3.football.api-sports.io/fixtures?league=140&season=2024", {
+            headers: { "x-apisports-key": "f5b949ef190d9ff30258ae4c943e7abf" }
+        })
+        .then(res => res.json())
+        .then(data => {
+            let html = "<ul>";
 
-        var myHeaders = new Headers();
-        // WSTAW TUTAJ SWÓJ KLUCZ API
-        myHeaders.append("x-apisports-key", "f5b949ef190d9ff30258ae4c943e7abf");
+            data.response.slice(-20).forEach(match => {
+                const date = new Date(match.fixture.date).toLocaleString('pl-PL', { dateStyle: 'short', timeStyle: 'short' });
+                const score = match.goals.home !== null ? `(${match.goals.home} - ${match.goals.away})` : "";
 
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
+                // Tworzymy link przekierowujący na podstronę z ID konkretnego meczu
+                const matchLink = `mecz.html?id=${match.fixture.id}`;
 
-        fetch("https://v3.football.api-sports.io/leagues", requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Błąd sieci: " + response.status);
-                }
-                return response.json(); // Zmienione na .json() dla ładniejszego formatowania
-            })
-            .then(result => {
-                // Wyświetlamy sformatowanego JSONa (4 spacje wcięcia)
-                outputElement.textContent = JSON.stringify(result, null, 4);
-                console.log(result);
-            })
-            .catch(error => {
-                outputElement.textContent = "Wystąpił błąd podczas pobierania danych.";
-                statusElement.innerHTML = `<p class="error">Błąd: ${error.message}</p>`;
-                console.log('error', error);
+                // Cały tekst meczu jest teraz objęty tagiem <a href="...">
+                html += `<li><a href="${matchLink}"><b>${date}</b>: ${match.teams.home.name} - ${match.teams.away.name} <b>${score}</b></a></li>`;
             });
-    });
-</script>
+
+            document.getElementById('output').innerHTML = html + "</ul>";
+        });
+    </script>
 
 </body>
 </html>
