@@ -2,85 +2,48 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Szczegóły meczu</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Match details</title>
+    <link rel="stylesheet" href="style_match.css">
 </head>
 <body>
+    <header class="header_1">
+    
+    
+    <a href="index.html" >
+      <img class="LOGO_1"
+      src="LOGO.png" alt="LOGO">
+    </a>
 
-    <a href="javascript:history.back()">⬅ Powrót do listy meczów</a>
+    <a href="index.html" class="nav_link"><h3 class="header_buttons active">RESULTS</h3></a>
 
-    <h1>Szczegóły spotkania</h1>
-    <div id="details">Ładowanie danych meczu...</div>
+    
+    <a href="kontakt.html" class="nav_link"><h3 class="header_buttons">REPORT BUG</h3></a>
+    
+    <a href="galeria.html" class="nav_link"><h3 class="header_buttons">GALLERY</h3></a>
+    
+  </header>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const matchId = urlParams.get('id');
 
-        const detailsElement = document.getElementById('details');
 
-        if (!matchId) {
-            detailsElement.innerHTML = "Błąd: Nie wybrano żadnego meczu (brak ID w linku).";
-        } else {
-            fetch(`https://v3.football.api-sports.io/fixtures?id=${matchId}`, {
-                headers: { "x-apisports-key": "f5b949ef190d9ff30258ae4c943e7abf" }
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (!data.response || data.response.length === 0) {
-                    detailsElement.innerHTML = "Błąd API: Nie znaleziono takiego meczu.";
-                    return;
-                }
+    <h1>MATCH DETAILS</h1>
+    <div id="details">Loading match data...</div>
 
-                const match = data.response[0];
-                const homeTeam = match.teams.home.name;
-                const awayTeam = match.teams.away.name;
-                const status = match.fixture.status.long;
-                const stadium = match.fixture.venue.name || "Brak informacji";
-                const city = match.fixture.venue.city || "";
-                const score = match.goals.home !== null ? `${match.goals.home} - ${match.goals.away}` : "Mecz się nie odbył / brak goli";
+    <script src="mecz.js"></script>
 
-                // 1. Wyświetlamy podstawowe szczegóły meczu
-                let html = `
-                    <h2>${homeTeam} vs ${awayTeam}</h2>
-                    <ul>
-                        <li><b>Wynik:</b> ${score}</li>
-                        <li><b>Status:</b> ${status}</li>
-                        <li><b>Miejsce:</b> ${stadium} ${city !== "" ? `(${city})` : ""}</li>
-                    </ul>
-                `;
 
-                // 2. Dodajemy sekcję SKŁADY (Lineups)
-                html += `<h3>Wyjściowe jedenastki:</h3>`;
 
-                // Sprawdzamy, czy API w ogóle zwróciło tablicę ze składami dla tego meczu
-                if (match.lineups && match.lineups.length > 0) {
+   
+    <footer class="footer_1">
+    <section class="LEFT_FOOTER">
+      <a href="index.html">
+      <img class="LOGO_1" src="LOGO.png" alt="LOGO">
+    </a>
+    </section>    
+    <section class="RIGHT_FOOTER">
+    
+      <h3 class="FOOTER_TEXT">La Liga 2020/21 season was won by Atlético Madrid, securing their 11th league title under coach Diego Simeone. They clinched the championship on the final matchday after a 2-1 comeback win against Valladolid, finishing ahead of Real Madrid and Barcelona.</h3>
+  </section>
 
-                    // Przechodzimy przez obie drużyny (gospodarzy i gości)
-                    match.lineups.forEach(teamData => {
-                        html += `<h4>${teamData.team.name} <small>(Formacja: ${teamData.formation || 'Brak danych'})</small></h4>`;
-                        html += `<ul>`;
-
-                        // Przechodzimy przez każdego zawodnika w wyjściowym składzie (startXI)
-                        teamData.startXI.forEach(item => {
-                            const player = item.player;
-                            html += `<li><b>${player.number || '?'}</b>. ${player.name} - <small>${player.pos}</small></li>`;
-                        });
-
-                        html += `</ul>`;
-                    });
-
-                } else {
-                    html += `<p><i>Brak danych o składach dla tego meczu w API.</i></p>`;
-                }
-
-                // Wrzucamy wszystko na stronę
-                detailsElement.innerHTML = html;
-            })
-            .catch(error => {
-                detailsElement.innerHTML = "Błąd sieci: " + error.message;
-            });
-        }
-    </script>
-
+  </footer>
 </body>
 </html>
