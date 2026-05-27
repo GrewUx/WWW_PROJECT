@@ -75,7 +75,6 @@ h1 {
 
 
 
-/* Przycisk powrotu */
 a[href="javascript:history.back()"] {
     display: inline-block;
     margin: 15px;
@@ -146,7 +145,7 @@ a[href="javascript:history.back()"] {
     font-weight: normal;
 }
 
-/* Lista zawodników */
+
 #details ul {
     list-style: none;
     padding: 0;
@@ -162,7 +161,7 @@ a[href="javascript:history.back()"] {
 
 #details li b {
     width: 25px;
-    color: #e01e22; /* Numery zawodników na czerwono */
+    color: #e01e22;
     display: inline-block;
 }
 
@@ -188,7 +187,7 @@ a[href="javascript:history.back()"] {
     color: #e01e22;
 }
 
-/* Loading state */
+
 #output:empty::before, #details:empty::before {
     content: "Pobieranie danych...";
     display: block;

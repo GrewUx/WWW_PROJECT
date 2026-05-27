@@ -7,31 +7,10 @@
 </head>
 <body>
 
-    <h1>La Liga (Sezon 2024)</h1>
+    <h1>La Liga (Nielimitowane API)</h1>
     <div id="output">Ładowanie...</div>
 
-    <script>
-        fetch("https://v3.football.api-sports.io/fixtures?league=140&season=2024", {
-            headers: { "x-apisports-key": "f5b949ef190d9ff30258ae4c943e7abf" }
-        })
-        .then(res => res.json())
-        .then(data => {
-            let html = "<ul>";
-
-            data.response.slice(-20).forEach(match => {
-                const date = new Date(match.fixture.date).toLocaleString('pl-PL', { dateStyle: 'short', timeStyle: 'short' });
-                const score = match.goals.home !== null ? `(${match.goals.home} - ${match.goals.away})` : "";
-
-                // Tworzymy link przekierowujący na podstronę z ID konkretnego meczu
-                const matchLink = `mecz.html?id=${match.fixture.id}`;
-
-                // Cały tekst meczu jest teraz objęty tagiem <a href="...">
-                html += `<li><a href="${matchLink}"><b>${date}</b>: ${match.teams.home.name} - ${match.teams.away.name} <b>${score}</b></a></li>`;
-            });
-
-            document.getElementById('output').innerHTML = html + "</ul>";
-        });
-    </script>
+    <script src="index.js"></script>
 
 </body>
 </html>
