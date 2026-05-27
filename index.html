@@ -2,36 +2,69 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>La Liga - Wyniki</title>
-    <link rel="stylesheet" href="style.css">
+    <title>La Liga - results</title>
+    <link rel="stylesheet" href="style_index.css">
 </head>
 <body>
+  <header class="header_1">
+    
+    
+    <a href="index.html" >
+      <img class="LOGO_1"
+      src="LOGO.png" alt="LOGO">
+    </a>
 
-    <h1>La Liga (Sezon 2024)</h1>
-    <div id="output">Ładowanie...</div>
+    <a href="index.html" class="nav_link"><h3 class="header_buttons active">RESULTS</h3></a>
 
-    <script>
-        fetch("https://v3.football.api-sports.io/fixtures?league=140&season=2024", {
-            headers: { "x-apisports-key": "f5b949ef190d9ff30258ae4c943e7abf" }
-        })
-        .then(res => res.json())
-        .then(data => {
-            let html = "<ul>";
+    
+    <a href="kontakt.html" class="nav_link"><h3 class="header_buttons">REPORT BUG</h3></a>
 
-            data.response.slice(-20).forEach(match => {
-                const date = new Date(match.fixture.date).toLocaleString('pl-PL', { dateStyle: 'short', timeStyle: 'short' });
-                const score = match.goals.home !== null ? `(${match.goals.home} - ${match.goals.away})` : "";
+    <a href="galeria.html" class="nav_link"><h3 class="header_buttons">GALLERY</h3></a>
+    
 
-                // Tworzymy link przekierowujący na podstronę z ID konkretnego meczu
-                const matchLink = `mecz.html?id=${match.fixture.id}`;
+   
+  
+  </header>
 
-                // Cały tekst meczu jest teraz objęty tagiem <a href="...">
-                html += `<li><a href="${matchLink}"><b>${date}</b>: ${match.teams.home.name} - ${match.teams.away.name} <b>${score}</b></a></li>`;
-            });
 
-            document.getElementById('output').innerHTML = html + "</ul>";
-        });
-    </script>
+
+    <h1>LA LIGA 2020/2021 SEASON</h1>
+    <div id="stats-container">
+        <div class="stat-box">
+            <h4>Rozegrane mecze</h4>
+            <p id="stat-matches">0</p>
+        </div>
+        <div class="stat-box">
+            <h4>Łączna liczba goli</h4>
+            <p id="stat-goals">0</p>
+        </div>
+    </div>
+
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search by team name">
+    </div>
+
+    <div id="output"></div>
+    
+    <div id="load-more-container">
+        <button id="load-more-btn">Load more matches</button>
+    </div>
+
+    <script src="index.js"></script>
+
+    
+    <footer class="footer_1">
+    <section class="LEFT_FOOTER">
+      <a href="index.html">
+      <img class="LOGO_1" src="LOGO.png" alt="LOGO">
+    </a>
+    </section>    
+    <section class="RIGHT_FOOTER">
+    
+      <h3 class="FOOTER_TEXT">La Liga 2020/21 season was won by Atlético Madrid, securing their 11th league title under coach Diego Simeone. They clinched the championship on the final matchday after a 2-1 comeback win against Valladolid, finishing ahead of Real Madrid and Barcelona.</h3>
+  </section>
+
+  </footer>
 
 </body>
 </html>
