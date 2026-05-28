@@ -24,7 +24,7 @@ fetch("https://raw.githubusercontent.com/openfootball/football.json/master/2020-
     renderMatches();
 })
 .catch(error => {
-    outputElement.innerHTML = `<div style="padding: 20px; text-align: center; color: red;">Błąd: ${error.message}</div>`;
+    outputElement.innerHTML = `<div style="padding: 20px; text-align: center; color: red;">Eror: ${error.message}</div>`;
 });
 
 
@@ -37,7 +37,7 @@ function calculateStats(matches) {
         return suma + match.score.ft[0] + match.score.ft[1];
     }, 0);
 
-    // Wstrzykujemy obliczone liczby do HTML
+   
     document.getElementById('stat-matches').textContent = rozegraneMecze.length;
     document.getElementById('stat-goals').textContent = sumaGoli;
 }

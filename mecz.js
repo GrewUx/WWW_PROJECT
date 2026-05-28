@@ -24,7 +24,14 @@ if (!team1 || !team2) {
         const scoreAway = match.score ? match.score.ft[1] : "-";
         const score = `${scoreHome} - ${scoreAway}`;
         
-        const status = match.score ? "Finished" : "Scheduled";
+        let status;
+
+        if (match.score) {
+        status = "Finished";
+        } 
+        else {
+        status = "Scheduled";
+        }
 
         let html = `
             <h2>${match.team1} vs ${match.team2}</h2>
