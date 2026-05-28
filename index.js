@@ -11,7 +11,7 @@ outputElement.innerHTML = "<div style='padding: 40px; text-align: center; color:
 
 fetch("https://raw.githubusercontent.com/openfootball/football.json/master/2020-21/es.1.json")
 .then(res => {
-    if (!res.ok) throw new Error("Błąd pobierania danych");
+    if (!res.ok) throw new Error("Couldn't download data");
     return res.json();
 })
 .then(data => {
