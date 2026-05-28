@@ -181,6 +181,7 @@ h3 {
     box-sizing: border-box;
     font-family: inherit;
     font-size: 14px;
+    resize: none;
 }
 
 #contact-form input:focus, 
