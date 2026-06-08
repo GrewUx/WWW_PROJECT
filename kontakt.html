@@ -24,19 +24,27 @@
     <h1>CONTACT FORM</h1>
     
     <div id="form-container">
-        <form id="contact-form">
+        <form id="contact-form" novalidate>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required>
 
+            <label for="phone">Phone (optional, e.g. +48 123 456 789):</label>
+            <input type="tel" id="phone" name="phone" placeholder="Leave empty or enter a full valid number">
+
             <label for="message">Message (min. 10 characters):</label>
             <textarea id="message" name="message" rows="5" required></textarea>
 
             <button type="submit">Send</button>
-            <div id="form-message"></div>
+            <div id="form-message" role="status" aria-live="polite"></div>
         </form>
+    </div>
+
+    <div id="reports-container">
+        <h2>Submitted reports</h2>
+        <div id="reports-list"></div>
     </div>
 
     <footer class="footer_1">
@@ -52,6 +60,7 @@
 
   </footer>
 
+    <script src="accessibility.js"></script>
     <script src="kontakt.js"></script>
 </body>
 </html>

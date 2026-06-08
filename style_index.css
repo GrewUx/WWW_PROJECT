@@ -66,11 +66,11 @@ h3 {
 }
 
 .nav_link:hover, .nav_link.active {
-    border-bottom: 4px solid #A8C4EC;
+    border-bottom: 4px solid #06457F;
 }
 
 .nav_link:hover .header_buttons, .nav_link.active .header_buttons {
-    color: #A8C4EC;
+    color: #0474C4;
 }
 
 .nav_link {
@@ -121,7 +121,7 @@ h3 {
     padding: 12px 15px;
     text-decoration: none;
     color: #262B40;
-    font-size: 14px;
+    font-size: 0.9rem;
     gap: 10px; 
 }
 
@@ -129,7 +129,7 @@ h3 {
     color: #262B40;
     font-weight: normal;
     min-width: 85px;
-    font-size: 12px;
+    font-size: 0.78rem;
     flex-shrink: 0; 
 }
 
@@ -169,10 +169,10 @@ h3 {
 
 .FOOTER_TEXT {
     color: #06457F;
-    font-size: 19px;
+    font-size: 1.2rem;
     text-align: left;
     padding: 15px 0; 
-    font-weight: 200;
+    font-weight: 400;
     max-width: 100%; 
 }
 
@@ -210,8 +210,8 @@ h3 {
     .FOOTER_TEXT {
         text-align: center;
         padding: 15px 0 0 0;
-        font-size: 16px; 
-        font-weight: 200;
+        font-size: 1rem; 
+        font-weight: 400;
     }
 }
 
@@ -226,7 +226,7 @@ h3 {
     color: #ffffff;
     border: none;
     padding: 15px 30px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
@@ -245,7 +245,7 @@ h3 {
 #search-input {
     width: 100%;
     padding: 15px;
-    font-size: 16px;
+    font-size: 1rem;
     border: 2px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
@@ -280,13 +280,13 @@ h3 {
 .stat-box h4 {
     margin: 0;
     color: #5379AE;
-    font-size: 14px;
+    font-size: 0.9rem;
     text-transform: uppercase;
 }
 
 .stat-box p {
     margin: 10px 0 0 0;
-    font-size: 28px;
+    font-size: 1.75rem;
     font-weight: bold;
     color: #06457F;
 }
@@ -295,4 +295,126 @@ h3 {
     #stats-container {
         flex-direction: column;
     }
+}
+
+/* --- Wybór sezonu --- */
+#season-container {
+    max-width: 800px;
+    margin: 20px auto 0 auto;
+    text-align: center;
+    padding: 0 5%;
+    box-sizing: border-box;
+}
+
+#season-container label {
+    font-weight: 600;
+    color: #06457F;
+    margin-right: 10px;
+}
+
+#season-select,
+#sort-select {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    color: #262B40;
+    cursor: pointer;
+}
+
+#season-select:focus-visible,
+#sort-select:focus-visible,
+#date-input:focus-visible {
+    outline: 3px solid #06457F;
+    outline-offset: 2px;
+    border-color: #06457F;
+}
+
+/* --- Wiersz z filtrami (data + sortowanie) --- */
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.filter-row label {
+    font-weight: 600;
+    color: #06457F;
+}
+
+#date-input {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+
+#clear-date-btn {
+    background: #5379AE;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#clear-date-btn:hover {
+    background: #06457F;
+}
+
+/* --- Wykres --- */
+#chart-container {
+    max-width: 800px;
+    margin: 20px auto 0 auto;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 90%;
+}
+
+#chart-container h4 {
+    margin: 0 0 15px 0;
+    color: #5379AE;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#goals-chart {
+    width: 100%;
+    height: auto;
+    max-width: 760px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* --- Animacja pojawiania się listy meczów --- */
+#output li {
+    animation: fadeInUp 0.4s ease both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Wyraźny obrys przy nawigacji klawiaturą (dostępność) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #06457F;
+    outline-offset: 2px;
 }

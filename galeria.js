@@ -1,18 +1,41 @@
-const photos = [
-    "PHOTO_1.jpeg",
-    "PHOTO_2.jpg",
-    "PHOTO_3.jpg"
-];
+const track = document.getElementById("carousel-track");
+const slides = track.querySelectorAll("img");
+const dotsContainer = document.getElementById("carousel-dots");
 
 let current = 0;
-const imgElement = document.getElementById("car-image");
 
-document.getElementById("btn-next").addEventListener("click", function() {
-    current = (current + 1) % photos.length;
-    imgElement.src = photos[current];
+// Tworzymy kropki nawigacyjne - po jednej na każde zdjęcie
+slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.className = "dot";
+    dot.setAttribute("aria-label", "Go to photo " + (index + 1));
+    dot.addEventListener("click", () => goTo(index));
+    dotsContainer.appendChild(dot);
 });
 
-document.getElementById("btn-prev").addEventListener("click", function() {
-    current = (current - 1 + photos.length) % photos.length;
-    imgElement.src = photos[current];
+const dots = dotsContainer.querySelectorAll(".dot");
+
+// Przesuwa całą "taśmę" ze zdjęciami - to daje płynną animację (CSS transition)
+function updateCarousel() {
+    track.style.transform = `translateX(-${current * 100}%)`;
+
+    dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === current);
+    });
+}
+
+function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    updateCarousel();
+}
+
+document.getElementById("btn-next").addEventListener("click", () => goTo(current + 1));
+document.getElementById("btn-prev").addEventListener("click", () => goTo(current - 1));
+
+// Obsługa strzałek na klawiaturze (dostępność)
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") goTo(current + 1);
+    if (event.key === "ArrowLeft") goTo(current - 1);
 });
+
+updateCarousel();

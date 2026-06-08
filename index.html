@@ -28,7 +28,18 @@
 
 
 
-    <h1>LA LIGA 2020/2021 SEASON</h1>
+    <h1 id="season-title">LA LIGA 2020/2021 SEASON</h1>
+
+    <div id="season-container">
+        <label for="season-select">Season:</label>
+        <select id="season-select">
+            <option value="2018-19">2018/2019</option>
+            <option value="2019-20">2019/2020</option>
+            <option value="2020-21" selected>2020/2021</option>
+            <option value="2021-22">2021/2022</option>
+        </select>
+    </div>
+
     <div id="stats-container">
         <div class="stat-box">
             <h4>Matches played</h4>
@@ -38,10 +49,34 @@
             <h4>All goals scored</h4>
             <p id="stat-goals">0</p>
         </div>
+        <div class="stat-box">
+            <h4>Goals per match</h4>
+            <p id="stat-avg">0</p>
+        </div>
+    </div>
+
+    <div id="chart-container">
+        <h4>Top 10 teams - goals scored</h4>
+        <canvas id="goals-chart" width="760" height="420" role="img"
+            aria-label="Bar chart with the top 10 teams by goals scored"></canvas>
     </div>
 
     <div id="search-container">
-        <input type="text" id="search-input" placeholder="Search by team name">
+        <input type="text" id="search-input" placeholder="Search by team name" aria-label="Search by team name">
+
+        <div class="filter-row">
+            <label for="date-input">Match date:</label>
+            <input type="date" id="date-input" aria-label="Filter matches by date">
+            <button type="button" id="clear-date-btn">Clear</button>
+
+            <label for="sort-select">Sort by:</label>
+            <select id="sort-select" aria-label="Sort matches">
+                <option value="date-desc">Date (newest)</option>
+                <option value="date-asc">Date (oldest)</option>
+                <option value="goals-desc">Goals (most)</option>
+                <option value="goals-asc">Goals (fewest)</option>
+            </select>
+        </div>
     </div>
 
     <div id="output"></div>
@@ -50,6 +85,7 @@
         <button id="load-more-btn">Load more matches</button>
     </div>
 
+    <script src="accessibility.js"></script>
     <script src="index.js"></script>
 
     

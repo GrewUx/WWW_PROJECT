@@ -24,10 +24,20 @@
     <h1>PHOTO GALLERY</h1>
 
    <div class="simple-carousel">
-        <button id="btn-prev" class="car-btn">❮</button>
-        <img id="car-image" src="PHOTO_1.jpeg" alt="Galeria">
-        <button id="btn-next" class="car-btn">❯</button>
+        <button id="btn-prev" class="car-btn" aria-label="Previous photo">❮</button>
+
+        <div class="carousel-viewport">
+            <div class="carousel-track" id="carousel-track">
+                <img src="PHOTO_1.jpeg" alt="Stadium photo 1">
+                <img src="PHOTO_2.jpg" alt="Stadium photo 2">
+                <img src="PHOTO_3.jpg" alt="Stadium photo 3">
+            </div>
+        </div>
+
+        <button id="btn-next" class="car-btn" aria-label="Next photo">❯</button>
     </div>
+
+    <div class="carousel-dots" id="carousel-dots"></div>
 
 
 
@@ -45,6 +55,7 @@
   </section>
 
   </footer>
+    <script src="accessibility.js"></script>
     <script src="galeria.js"></script>
 </body>
 </html>

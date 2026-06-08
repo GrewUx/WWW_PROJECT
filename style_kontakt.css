@@ -66,11 +66,11 @@ h3 {
 }
 
 .nav_link:hover, .nav_link.active {
-    border-bottom: 4px solid #A8C4EC;
+    border-bottom: 4px solid #06457F;
 }
 
 .nav_link:hover .header_buttons, .nav_link.active .header_buttons {
-    color: #A8C4EC;
+    color: #0474C4;
 }
 
 .nav_link {
@@ -112,10 +112,10 @@ h3 {
 
 .FOOTER_TEXT {
     color: #06457F;
-    font-size: 19px;
+    font-size: 1.2rem;
     text-align: left;
     padding: 15px 0; 
-    font-weight: 200;
+    font-weight: 400;
     max-width: 100%; 
 }
 
@@ -144,8 +144,8 @@ h3 {
     .FOOTER_TEXT {
         text-align: center;
         padding: 15px 0 0 0;
-        font-size: 16px; 
-        font-weight: 200;
+        font-size: 1rem; 
+        font-weight: 400;
     }
 }
 
@@ -169,7 +169,7 @@ h3 {
 #contact-form label {
     font-weight: 600;
     color: #06457F;
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 #contact-form input, 
@@ -180,7 +180,7 @@ h3 {
     border-radius: 4px;
     box-sizing: border-box;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 0.9rem;
     resize: none;
 }
 
@@ -197,7 +197,7 @@ h3 {
     padding: 15px;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -211,13 +211,131 @@ h3 {
     margin-top: 15px;
     font-weight: bold;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 .msg-error {
-    color: #d9534f;
+    color: #c0392b;
 }
 
 .msg-success {
-    color: #5cb85c;
+    color: #2e7d32;
 }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid #06457F;
+    outline-offset: 2px;
+}
+
+/* --- Lista zgłoszeń --- */
+#reports-container {
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    width: 90%;
+}
+
+#reports-container h2 {
+    color: #06457F;
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.no-reports {
+    text-align: center;
+    color: #5379AE;
+}
+
+.report-item {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    border-left: 5px solid #06457F;
+    padding: 18px;
+    margin-bottom: 15px;
+    animation: reportIn 0.35s ease both;
+}
+
+@keyframes reportIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.report-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.report-name {
+    font-weight: 700;
+    color: #06457F;
+    font-size: 1.05rem;
+}
+
+.report-item p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #262B40;
+}
+
+.report-msg {
+    background: #F7F9F6;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 8px !important;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.status-new { background: #5379AE; }
+.status-progress { background: #d98c00; }
+.status-resolved { background: #2e7d32; }
+
+.report-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.report-actions label {
+    font-size: 0.85rem;
+    color: #06457F;
+    font-weight: 600;
+}
+
+.report-actions select {
+    margin-left: 6px;
+    padding: 6px 8px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.delete-btn:hover { background: #962d22; }
+.delete-btn:active { transform: scale(0.95); }

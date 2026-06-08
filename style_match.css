@@ -65,11 +65,11 @@ h3 {
 }
 
 .nav_link:hover, .nav_link.active {
-    border-bottom: 4px solid #A8C4EC;
+    border-bottom: 4px solid #06457F;
 }
 
 .nav_link:hover .header_buttons, .nav_link.active .header_buttons {
-    color: #A8C4EC;
+    color: #0474C4;
 }
 
 .nav_link {
@@ -111,10 +111,10 @@ h3 {
 
 .FOOTER_TEXT {
     color: #06457F;
-    font-size: 19px;
+    font-size: 1.2rem;
     text-align: left;
     padding: 15px 0; 
-    font-weight: 200;
+    font-weight: 400;
     max-width: 100%; 
 }
 
@@ -147,8 +147,8 @@ h3 {
     .FOOTER_TEXT {
         text-align: center;
         padding: 15px 0 0 0;
-        font-size: 16px; 
-        font-weight: 200;
+        font-size: 1rem; 
+        font-weight: 400;
     }
 }
 
@@ -187,7 +187,7 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 16px;
+    font-size: 1rem;
     color: #262B40;
     border-bottom: 1px solid #ddd;
     padding-bottom: 15px;
@@ -201,7 +201,7 @@ h3 {
 #details ul:first-of-type li b {
     text-transform: uppercase;
     color: #06457F;
-    font-size: 14px;
+    font-size: 0.9rem;
     margin: 0;
     font-weight: 700;
 }
@@ -212,4 +212,53 @@ h3 {
     padding: 40px;
     text-align: center;
     color: #262B40;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #06457F;
+    outline-offset: 2px;
+}
+
+/* --- Head to head --- */
+.h2h-title {
+    color: #06457F;
+    margin: 25px 0 12px 0;
+    text-transform: uppercase;
+    font-size: 1rem;
+    border-top: 2px solid #f1f1f1;
+    padding-top: 20px;
+}
+
+.h2h-summary {
+    text-align: center;
+    font-size: 1.05rem;
+    color: #262B40;
+    background: #F7F9F6;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 0 0 12px 0;
+}
+
+.h2h-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.h2h-list li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #262B40;
+    animation: fadeIn 0.4s ease both;
+}
+
+.h2h-list li:last-child {
+    border-bottom: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
