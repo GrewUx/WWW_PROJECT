@@ -7,7 +7,7 @@ Dokument tłumaczy każdą funkcję prostym językiem: **co to robi**, **jak dzi
 
 ---
 
-## 0. Ogólna architektura (warto znać na start)
+## 0. Ogólna architektura 
 
 - 4 podstrony HTML: `index.html` (wyniki), `mecz.html` (szczegóły meczu),
   `kontakt.html` (zgłoś błąd), `galeria.html` (galeria).
