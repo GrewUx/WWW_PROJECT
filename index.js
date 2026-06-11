@@ -12,7 +12,7 @@ const sortSelect = document.getElementById('sort-select');
 const seasonSelect = document.getElementById('season-select');
 const seasonTitle = document.getElementById('season-title');
 
-// Pobiera dane wybranego sezonu z API (osobne zapytanie dla każdego sezonu)
+// Pobiera dane wybranego sezonu z API 
 function loadSeason(season) {
     outputElement.innerHTML = "<div style='padding: 40px; text-align: center; color: #262B40;'>Downloading data...</div>";
 
@@ -37,7 +37,7 @@ function loadSeason(season) {
         });
 }
 
-// --- Statystyki liczone w kodzie (nie pobierane z API) ---
+// Statystyki liczone w kodzie (nie pobierane z API)
 function calculateStats(matches) {
     const playedMatches = matches.filter(m => m.score && m.score.ft);
 
@@ -52,7 +52,7 @@ function calculateStats(matches) {
     document.getElementById('stat-avg').textContent = avg;
 }
 
-// --- Wykres: TOP 10 drużyn wg strzelonych goli, rysowany na canvas ---
+// Wykres: TOP 10 drużyn wg strzelonych goli, rysowany na canvas 
 function drawChart(matches) {
     const goalsByTeam = {};
 
@@ -104,7 +104,7 @@ function drawChart(matches) {
     });
 }
 
-// --- Filtrowanie (nazwa + data) i sortowanie razem ---
+//  Filtrowanie (nazwa + data) i sortowanie razem 
 function applyFilters() {
     const text = searchInput.value.toLowerCase();
     const chosenDate = dateInput.value; // format "2020-09-12" - taki sam jak w danych

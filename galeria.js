@@ -15,7 +15,7 @@ slides.forEach((_, index) => {
 
 const dots = dotsContainer.querySelectorAll(".dot");
 
-// Przesuwa całą "taśmę" ze zdjęciami - to daje płynną animację (CSS transition)
+// Przesuwa całą taśmę ze zdjęciami
 function updateCarousel() {
     track.style.transform = `translateX(-${current * 100}%)`;
 
@@ -32,7 +32,7 @@ function goTo(index) {
 document.getElementById("btn-next").addEventListener("click", () => goTo(current + 1));
 document.getElementById("btn-prev").addEventListener("click", () => goTo(current - 1));
 
-// Obsługa strzałek na klawiaturze (dostępność)
+// Obsługa strzałek na klawiaturze 
 document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") goTo(current + 1);
     if (event.key === "ArrowLeft") goTo(current - 1);

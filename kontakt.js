@@ -6,7 +6,7 @@ const STATUSES = ["New", "In progress", "Resolved"];
 
 // --- Walidacja ---
 
-// Telefon: PUSTY jest OK, albo musi być w pełni poprawny (nic "pomiędzy").
+// Telefon: PUSTY jest OK, albo musi być w pełni poprawny 
 // Akceptujemy opcjonalny +, cyfry, spacje i myślniki; po oczyszczeniu 9-15 cyfr.
 function isPhoneValid(phone) {
     if (phone === "") return true; // puste pole dozwolone
@@ -19,7 +19,6 @@ function isPhoneValid(phone) {
 }
 
 function isEmailValid(email) {
-    // prosty, ale sensowny wzorzec: coś@coś.coś
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
@@ -87,7 +86,7 @@ form.addEventListener('submit', function (event) {
     renderReports();
 });
 
-// --- Lista zgłoszeń (localStorage) ---
+// Lista zgłoszeń (localStorage) 
 
 function getReports() {
     return JSON.parse(localStorage.getItem('report')) || [];
@@ -191,6 +190,5 @@ function migrateOldReports() {
     if (changed) saveReports(reports);
 }
 
-// pokazujemy listę od razu po wejściu na stronę
 migrateOldReports();
 renderReports();

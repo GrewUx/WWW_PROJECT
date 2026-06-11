@@ -5,7 +5,7 @@ const season = urlParams.get('season') || '2020-21'; // domyślny sezon dla star
 
 const detailsElement = document.getElementById('details');
 
-// Sezony przeszukiwane dla statystyki "head to head"
+// Sezony przeszukiwane dla statystyki h2h
 const ALL_SEASONS = ['2018-19', '2019-20', '2020-21', '2021-22'];
 
 function seasonUrl(s) {
@@ -54,7 +54,7 @@ if (!team1 || !team2) {
         });
 }
 
-// Kolejne zapytania do API - pobieramy wszystkie sezony i liczymy bilans spotkań
+// pobieramy wszystkie sezony i liczymy bilans spotkań
 function loadHeadToHead() {
     const requests = ALL_SEASONS.map(s =>
         fetch(seasonUrl(s))
@@ -72,7 +72,7 @@ function loadHeadToHead() {
             if (!data) return;
 
             data.matches.forEach(m => {
-                // szukamy spotkań tych dwóch drużyn (niezależnie kto gospodarzem)
+                // szukamy spotkań tych dwóch drużyn 
                 const sameTeams =
                     (m.team1 === team1 && m.team2 === team2) ||
                     (m.team1 === team2 && m.team2 === team1);

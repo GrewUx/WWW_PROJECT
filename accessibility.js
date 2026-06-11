@@ -1,8 +1,8 @@
 // Wspólny pasek dostępności - rozmiar czcionki + tryb wysokiego kontrastu.
-// Ustawienia zapisywane w localStorage, więc działają na wszystkich podstronach.
+
 
 (function () {
-    // --- Wstrzykiwane style paska (żeby nie duplikować CSS w każdym pliku) ---
+    //  Wstrzykiwane style paska (żeby nie duplikować CSS w każdym pliku) 
     const style = document.createElement("style");
     style.textContent = `
         .a11y-bar {
@@ -57,7 +57,7 @@
     `;
     document.head.appendChild(style);
 
-    // --- Budowa paska ---
+    //  Budowa paska
     const bar = document.createElement("div");
     bar.className = "a11y-bar";
     bar.setAttribute("role", "toolbar");
@@ -71,7 +71,7 @@
     `;
     document.body.insertBefore(bar, document.body.firstChild);
 
-    // --- Logika rozmiaru czcionki (skaluje root font-size) ---
+    //  Logika rozmiaru czcionki (skaluje root font-size) 
     const sizes = { small: "87.5%", normal: "100%", big: "125%" };
 
     function applyFontSize(key) {
@@ -83,7 +83,7 @@
     document.getElementById("a11y-normal").addEventListener("click", () => applyFontSize("normal"));
     document.getElementById("a11y-big").addEventListener("click", () => applyFontSize("big"));
 
-    // --- Logika wysokiego kontrastu ---
+    // Logika wysokiego kontrastu 
     const contrastBtn = document.getElementById("a11y-contrast");
 
     function applyContrast(on) {
@@ -96,7 +96,7 @@
         applyContrast(!document.body.classList.contains("high-contrast"));
     });
 
-    // --- Wczytanie zapisanych ustawień ---
+    //  Wczytanie zapisanych ustawień 
     applyFontSize(localStorage.getItem("a11y-font") || "normal");
     applyContrast(localStorage.getItem("a11y-contrast") === "1");
 })();
